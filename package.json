@@ -1,0 +1,44 @@
+{
+  "name": "cache-dns",
+  "version": "0.0.1",
+  "description": "Like `dns` module, but cache the results.",
+  "main": "index.js",
+  "scripts": {
+    "test": "make test-all",
+    "blanket": { 
+      "pattern": "cache-dns/lib",
+      "data-cover-flags": {
+        "debug": false
+      }
+    },
+    "travis-cov": {
+      "threshold": 90
+    }
+  },
+  "dependencies": {
+
+  },
+  "devDependencies": {
+    "should": "*",
+    "blanket": "*",
+    "travis-cov": "*",
+    "coveralls": "*",
+    "mocha-lcov-reporter": "*",
+    "pedding": "*",
+    "mm": "*",
+    "benchmark": "*",
+    "mocha": "*"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git://github.com/fengmk2/cache-dns.git"
+  },
+  "keywords": [
+    "cache-dns"
+  ],
+  "engines": {
+    "node": ">= 0.8.0"
+  },
+  "author": "fengmk2 <fengmk2@gmail.com>",
+  "license": "MIT"
+}
