@@ -53,6 +53,22 @@ describe('cache-dns.test.js', function () {
         done();
       });
     });
+
+    it('should return localhost to 127.0.0.1', function (done) {
+      dns.resolve4('localhost', function (err, addresses) {
+        should.not.exists(err);
+        addresses.should.eql(['127.0.0.1']);
+        done();
+      });
+    });
+
+    it('should return error when resolve 127.0.0.1', function (done) {
+      dns.resolve4('127.0.0.1', function (err, addresses) {
+        should.exists(err);
+        should.not.exists(addresses);
+        done();
+      });
+    });
   });
 
   describe('_updateCaches()', function () {
