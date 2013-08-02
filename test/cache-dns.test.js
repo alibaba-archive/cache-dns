@@ -139,13 +139,14 @@ describe('cache-dns.test.js', function () {
           mm.restore();
 
           mm.data(require('dns'), 'lookup', []);
-          dns.once('www.taobao.com', function (err, addresses) {
+          dns.once('www.taobao.com', function (err, addresses, method) {
+            method.should.equal('lookup');
             should.not.exists(err);
             addresses.should.eql([]);
 
-            dns.resolve4('www.taobao.com', function (err, addresses) {
+            dns.lookup('www.taobao.com', function (err, ip) {
               should.not.exists(err);
-              addresses.length.should.above(0);
+              should.exists(ip);
               done();
             });
           });
