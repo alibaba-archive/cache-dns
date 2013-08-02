@@ -17,7 +17,7 @@ var mm = require('mm');
 
 describe('cache-dns.test.js', function () {
   var dns = CacheDNS.create({
-    cacheTime: 100, // 500ms
+    cacheTime: 200
   });
 
   after(function () {
@@ -99,11 +99,14 @@ describe('cache-dns.test.js', function () {
           mm.restore();
 
           mm.data(require('dns'), 'resolve4', []);
-          dns.once('www.taobao.com', function (err, addresses) {
+          dns.once('www.taobao.com', function (err, addresses, method) {
+            method.should.equal('resolve4');
             should.not.exists(err);
             addresses.should.eql([]);
 
-            dns.resolve4('www.taobao.com', function (err, addresses) {
+            mm.restore();
+            dns.once('www.taobao.com', function (err, addresses, method) {
+              method.should.equal('resolve4');
               should.not.exists(err);
               addresses.length.should.above(0);
               done();
@@ -116,7 +119,7 @@ describe('cache-dns.test.js', function () {
 
   describe('lookup() _updateCaches()', function () {
     var dns = CacheDNS.create({
-      cacheTime: 100, // 500ms
+      cacheTime: 200
     });
 
     before(function (done) {
@@ -138,13 +141,15 @@ describe('cache-dns.test.js', function () {
           should.exists(err);
           mm.restore();
 
-          mm.data(require('dns'), 'lookup', []);
+          mm.data(require('dns'), 'lookup', '');
           dns.once('www.taobao.com', function (err, addresses, method) {
             method.should.equal('lookup');
             should.not.exists(err);
             addresses.should.eql([]);
 
-            dns.lookup('www.taobao.com', function (err, ip) {
+            mm.restore();
+            dns.once('www.taobao.com', function (err, ip, method) {
+              method.should.equal('lookup');
               should.not.exists(err);
               should.exists(ip);
               done();
