@@ -1,6 +1,6 @@
 {
   "name": "cache-dns",
-  "version": "0.0.1",
+  "version": "0.0.2",
   "description": "Like `dns` module, but cache the results.",
   "main": "index.js",
   "scripts": {

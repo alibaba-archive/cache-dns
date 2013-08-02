@@ -19,7 +19,11 @@ var CacheDNS = require('cache-dns');
 var dns = CacheDNS.create({
   cacheTime: 10000, // 10 seconds
 });
-dns.resolve4('www.taobao.com', function (err, addresses) {
+dns.resolve4('www.taobao.com', function (err, ips) {
+  console.log(arguments);
+});
+
+dns.lookup('www.taobao.com', function (err, ip) {
   console.log(arguments);
 });
 ```
