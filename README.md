@@ -1,6 +1,8 @@
 cache-dns [![Build Status](https://secure.travis-ci.org/fengmk2/cache-dns.png)](http://travis-ci.org/fengmk2/cache-dns) [![Coverage Status](https://coveralls.io/repos/fengmk2/cache-dns/badge.png)](https://coveralls.io/r/fengmk2/cache-dns)
 =======
 
+[![NPM](https://nodei.co/npm/cache-dns.png?downloads=true&stars=true)](https://nodei.co/npm/cache-dns)
+
 ![logo](https://raw.github.com/fengmk2/cache-dns/master/logo.png)
 
 Like `dns` module, but cache the results.
@@ -28,7 +30,7 @@ dns.lookup('www.taobao.com', function (err, ip) {
 });
 ```
 
-## License 
+## License
 
 (The MIT License)
 

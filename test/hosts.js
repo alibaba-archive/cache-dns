@@ -16,6 +16,10 @@ var dns = CacheDNS.create({
   cacheTime: 100, // 500ms
 });
 
+dns.resolve4('10.206.44.183', function () {
+  console.log(arguments);
+});
+
 dns.resolve4('local.wo.taobao.com', function (err, addresses) {
   console.log('resolve4: local.wo.taobao.com', err, addresses);
 
